@@ -1,0 +1,10 @@
+
+bin/
+obj/
+dist/
+
+gamedir/
+
+.vs/
+*.user
+.DS_Store
