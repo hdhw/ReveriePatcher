@@ -18,8 +18,12 @@ namespace Reverie.Patcher
         private const string DefaultServer = "https://127.0.0.1:5480";
 
         internal static string Server = DefaultServer;
-        internal static string RealtimeAppId = "";
-        internal static string VoiceAppId = "";
+        // Mocha's shared Photon apps, used when the server doesn't name its own.
+        private const string SharedRealtimeAppId = "94e5bc5c-d19b-4651-b3c0-e0f7758c17e1";
+        private const string SharedVoiceAppId = "bfa91264-1580-4e63-b355-77404b95e33e";
+
+        internal static string RealtimeAppId = SharedRealtimeAppId;
+        internal static string VoiceAppId = SharedVoiceAppId;
         internal static string AppVersion = "20230414_prod";
         internal static string Region = "us";
 
@@ -80,7 +84,9 @@ namespace Reverie.Patcher
                 Region = Read(root, "Region", Region);
                 if (RealtimeAppId.Length == 0)
                 {
-                    MelonLogger.Warning("The server has no Photon App ID set, so rooms will not load. The host sets it in the Reverie panel.");
+                    MelonLogger.Warning("The server has no Photon App ID set; using the shared Photon app.");
+                    RealtimeAppId = SharedRealtimeAppId;
+                    VoiceAppId = SharedVoiceAppId;
                 }
             }
             catch (Exception ex)

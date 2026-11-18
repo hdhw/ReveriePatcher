@@ -29,7 +29,7 @@ Steam must be running. The server uses your Steam account to identify you.
 
 - Sends the game's nameserver lookup to your server instead of `ns.rec.net`.
 - Adds the headers Reverie's server expects (Steam ID, patch protocol version).
-- Uses your server's Photon App IDs (from `/api/photon/config`).
+- Uses your server's Photon App IDs (from `/api/photon/config`), or the shared Mocha Photon app if it has none.
 - Accepts the server's self-signed HTTPS certificate. The game only talks HTTPS.
 - Disables Rec Room's own anti-cheat and EAC challenge, and stops a client crash when spawning maker-pen objects.
 
